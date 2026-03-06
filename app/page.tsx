@@ -1,11 +1,19 @@
+import HistorySection from "@/components/BriefHistory";
+import EventPageHome from "@/components/EventHome";
 import HeroSlider from "@/components/Hero";
-import Navbar from "@/components/Navbar";
+import CallToActionPage from "@/components/JoinUs";
+import HeroesPage from "@/components/LanguageHeroes";
+
 
 export default function Home() {
   return (
     <div className="">
-      <Navbar />
+     
       <HeroSlider></HeroSlider>
+      <HistorySection></HistorySection>
+      <HeroesPage></HeroesPage>
+      <EventPageHome></EventPageHome>
+      <CallToActionPage></CallToActionPage>
     </div>
   );
 }

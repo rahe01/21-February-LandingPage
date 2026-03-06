@@ -1,6 +1,6 @@
 "use client";
 
-
+import { useEffect, useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -10,27 +10,37 @@ import {
 } from "@/components/ui/carousel";
 
 export default function HeroSlider() {
+  const slides = ["/b1.jpeg", "/b2.jpeg"]; // slide images
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slides.length); // loop back to first slide
+    }, 3000); // 2 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative w-full overflow-hidden">
       <Carousel className="relative">
         <CarouselContent>
-          {/* Slide 1 */}
-          <CarouselItem className="relative max-h-screen  w-full">
-            <img
-              src="/b1.jpeg"
-              alt="Hero Image 1"
-              className="object-cover w-full h-full"
-            />
-          </CarouselItem>
-
-          {/* Slide 2 */}
-          <CarouselItem className="relative max-h-screen w-full">
-            <img
-              src="/b2.jpeg"
-              alt="Hero Image 2"
-              className="object-cover w-full h-full"
-            />
-          </CarouselItem>
+          {slides.map((src, index) => (
+            <CarouselItem
+              key={index}
+              className={`relative max-h-screen w-full transition-opacity duration-700 ${
+                index === currentIndex
+                  ? "opacity-100"
+                  : "opacity-0 absolute top-0 left-0"
+              }`}
+            >
+              <img
+                src={src}
+                alt={`Hero Image ${index + 1}`}
+                className="object-cover w-full h-full "
+              />
+            </CarouselItem>
+          ))}
         </CarouselContent>
 
         {/* Navigation Buttons */}
