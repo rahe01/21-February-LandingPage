@@ -81,7 +81,7 @@ export default function LanguageDayNavbar({ className }: NavbarProps) {
 
           {/* Explore Button */}
           <Link href="/gallery">
-            <Button className="bg-green-500 hover:bg-green-600 text-white text-md md:text-lg h-12 flex items-center justify-center">
+            <Button className="bg-green-500 hover:bg-green-600 text-black text-md md:text-lg h-12 flex items-center justify-center">
               Explore
             </Button>
           </Link>
